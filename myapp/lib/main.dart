@@ -15,6 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Sales",
       initialRoute: "/",
+      theme: ThemeData(
+        textTheme: TextTheme(
+          displayLarge: TextStyle(fontSize: 48.0, color: Color(0xffE9E9EC)),
+        ),
+        
+      ),
       routes: {
         "/": (context) => MyHomePage(),
         "/login": (context) => LoginPage(),
@@ -50,9 +56,7 @@ class MyHomePage extends StatelessWidget {
 
     return Scaffold(
       body: Column(
-        children: [
-          Text("XAXA")
-        ],
+        children: [Text("XAXA")],
       ),
     );
   }
