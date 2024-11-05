@@ -34,9 +34,41 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
               Theme.of(context).componentPadTop,
-              Expanded(child: Text("data").smallRoundedContainer().largeRoundedContainer(),),
+              Expanded(
+                child: Column(
+                  children: [
+                    Text("Username"),
+                    Theme.of(context).componentPadTop,
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Username"),
+                    ),
+                    Theme.of(context).componentPadTop,
+                    Text("Password"),
+                    Theme.of(context).componentPadTop,
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Password"),
+                    ),
+                    Theme.of(context).componentPadTop,
+                    Row(
+                      children: [
+                        Checkbox(value: false, onChanged: null),
+                        Text("Remember me"),
+                        ElevatedButton(onPressed: () {}, child: Text("login"))
+                      ],
+                    ),
+                    Theme.of(context).componentPadTop,
+                    Row(
+                      children: [
+                        ElevatedButton(onPressed: () {}, child: Text("G")),
+                        SizedBox(width: 30,),
+                        ElevatedButton(onPressed: () {}, child: Text("F")),
+                      ],
+                    ),
+                  ],
+                ).smallRoundedContainer().largeRoundedContainer(),
+              ),
+              // Expanded(child: TextFormField(decoration: InputDecoration(hintText: "Username"),)
               // Text("data").baseRoundedContainer(),
-
             ],
           ),
         ),
