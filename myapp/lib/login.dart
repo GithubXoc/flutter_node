@@ -24,68 +24,24 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Theme.of(context).pageTitle,
-              Row(
-                children: [
-                  Text(
-                    "Login",
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.displayLarge,
-                  )
-                ],
-              ),
+              Bigtitle("Login"),
               Theme.of(context).componentPadTop,
-              LoginSection(),
+              Expanded(
+                child: Column(
+                  children: [
+                    LoginField("Username"),
+                    LoginField("Password"),
+                    LoginButton(),
+                    LoginMethods(),
+                  ],
+                ).smallRoundedContainer().largeRoundedContainer(),
+              ),
               // Expanded(child: TextFormField(decoration: InputDecoration(hintText: "Username"),)
               // Text("data").baseRoundedContainer(),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class LoginSection extends StatelessWidget {
-  const LoginSection({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 50,),
-          Text(
-            "Username",
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
-          Theme.of(context).componentPadTop,
-          TextFormField(
-            decoration: InputDecoration(hintText: "Username"),
-          ),
-          Theme.of(context).componentPadTop,
-          Text("Password",
-              textAlign: TextAlign.left,
-              style: Theme.of(context).textTheme.displayMedium),
-          Theme.of(context).componentPadTop,
-          TextFormField(
-            decoration: InputDecoration(hintText: "Password"),
-          ),
-          Theme.of(context).componentPadTop,
-          Row(
-            children: [
-              Checkbox(value: false, onChanged: null),
-              Text("Remember me"),
-              ElevatedButton(onPressed: () {}, child: Text("login"))
-            ],
-          ),
-          Theme.of(context).componentPadTop,
-          LoginMethods(),
-        ],
-      ).smallRoundedContainer().largeRoundedContainer(),
     );
   }
 }
@@ -104,6 +60,66 @@ class LoginMethods extends StatelessWidget {
           width: 30,
         ),
         ElevatedButton(onPressed: () {}, child: Text("F")),
+      ],
+    );
+  }
+}
+
+class LoginButton extends StatelessWidget {
+  final String remember = "Remember me";
+  final String login = "Login";
+  const LoginButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(value: false, onChanged: null),
+        Text(remember),
+        ElevatedButton(onPressed: () {}, child: Text(login)),
+        Theme.of(context).componentPadTop,
+      ],
+    );
+  }
+}
+
+class Bigtitle extends StatelessWidget {
+  final String bigTitle;
+  const Bigtitle(
+    this.bigTitle, {
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          bigTitle,
+          textAlign: TextAlign.left,
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+      ],
+    );
+  }
+}
+
+class LoginField extends StatelessWidget {
+  final String fieldName;
+  const LoginField(this.fieldName, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(fieldName),
+        Theme.of(context).componentPadTop,
+        TextFormField(
+          decoration: InputDecoration(hintText: fieldName),
+        ),
+        Theme.of(context).componentPadTop
       ],
     );
   }
